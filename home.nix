@@ -1,19 +1,12 @@
 { config, pkgs, ... }:
 
 {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
   home.username = "fabian";
   home.homeDirectory = "/home/fabian";
 
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "23.11"; # Please read the comment before changing.
+  # TODO: this might be problem in the future
+  # if new machines are installed on another base
+  home.stateVersion = "23.11";
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -36,6 +29,25 @@
     # '')
   ];
 
+  programs.git = {
+    enable = true;
+    userName = "Fabian Neuschmidt";
+    userEmail = "fabian.neuschmidt@icarus-consult.de";
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
+  };
+
+  programs.zsh = {
+    enable = true;
+    enableAutosuggestions = true;
+    enableCompletion = true;
+    envExtra = ''
+      export TESTVAR="something"
+    '';
+  };
+
+
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
@@ -49,6 +61,12 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+#    ".local/share/zsh/zsh-autosuggestions".source =
+#      "${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions";
+#    ".local/share/zsh/zsh-fast-syntax-highlighting".source =
+#      "${pkgs.zsh-fast-syntax-highlighting}/share/zsh/site-functions";
+#    ".local/share/zsh/nix-zsh-completions".source =
+#      "${pkgs.nix-zsh-completions}/share/zsh/plugins/nix";
   };
 
   # Home Manager can also manage your environment variables through

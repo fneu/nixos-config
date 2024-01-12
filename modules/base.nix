@@ -31,10 +31,14 @@
     packages = with pkgs; [];
   };
 
+  # Default shell
+  # Needs to be enabled system-wide, even if it is also declared in home-manager
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    git
     home-manager
     python3
   ];
