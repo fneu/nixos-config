@@ -39,6 +39,7 @@
   environment.systemPackages = with pkgs; [
     git
     home-manager
+    python3
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
