@@ -1,9 +1,11 @@
-{ config, lib, pkgs, nixos-wsl, ... }:
+{ lib, pkgs, nixos-wsl, home-manager, ... }:
 
 {
   imports =
     [ 
       ../../modules/base.nix
+
+      home-manager.nixosModules.home-manager
 
       nixos-wsl.nixosModules.wsl
     ];
@@ -14,4 +16,8 @@
 
   networking.hostName = "WSL";
   system.stateVersion = "23.11";
+
+  # Home Manager configuration
+  home-manager.extraSpecialArgs = { inherit pkgs; };
+  home-manager.users.fabian = import ../../home.nix;
 }

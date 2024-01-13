@@ -34,24 +34,12 @@
         specialArgs = {inherit system; inherit pkgs; inherit nixos-hardware; inherit home-manager; };
 	modules = [
           ./hosts/P51
-
-  	  home-manager.nixosModules.home-manager
-  	  {
-  	    home-manager.extraSpecialArgs = inputs;
-  	    home-manager.users.fabian = import ./home.nix;
-  	  }
 	];
       };
       WSL = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit system; inherit pkgs; inherit nixos-wsl; };
+        specialArgs = {inherit system; inherit pkgs; inherit nixos-wsl; inherit home-manager; };
 	modules = [
 	  ./hosts/WSL
-
-  	  home-manager.nixosModules.home-manager
-  	  {
-  	    home-manager.extraSpecialArgs = inputs;
-  	    home-manager.users.fabian = import ./home.nix;
-  	  }
 	];
       };
     };
