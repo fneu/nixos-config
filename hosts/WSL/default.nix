@@ -4,6 +4,8 @@
   imports =
     [ 
       ../../modules/base.nix
+
+      nixos-wsl.nixosModules.wsl
     ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

@@ -1,10 +1,12 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nixos-hardware, home-manager, ... }:
 
 {
   imports =
     [ 
       ../../modules/boot.nix
       ../../modules/base.nix
+
+      nixos-hardware.nixosModules.lenovo-thinkpad-p51
 
       # Include the results of the hardware scan.
       ./hardware-configuration.nix

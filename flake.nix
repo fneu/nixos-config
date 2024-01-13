@@ -11,9 +11,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, home-manager }@inputs: 
+  outputs = { self, nixpkgs, nixos-wsl, home-manager, nixos-hardware }@inputs: 
   let
     system = "x86_64-linux";
 
@@ -29,7 +31,7 @@
 
     nixosConfigurations = {
       P51 = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit system; };
+        specialArgs = {inherit system; inherit pkgs; inherit nixos-hardware; inherit home-manager; };
 	modules = [
           ./hosts/P51
 
@@ -41,7 +43,7 @@
 	];
       };
       WSL = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit system; };
+        specialArgs = {inherit system; inherit pkgs; inherit nixos-wsl; };
 	modules = [
 	  ./hosts/WSL
 
@@ -50,8 +52,6 @@
   	    home-manager.extraSpecialArgs = inputs;
   	    home-manager.users.fabian = import ./home.nix;
   	  }
-
-	  nixos-wsl.nixosModules.wsl
 	];
       };
     };
