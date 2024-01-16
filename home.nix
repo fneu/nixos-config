@@ -11,10 +11,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    pkgs.hello
-
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -88,6 +84,25 @@
     EDITOR = "nvim";
   };
 
+  gtk = {
+    enable = true;
+    cursorTheme.package = pkgs.breeze-qt5;
+    cursorTheme.name = "breeze_cursors";
+    theme.package = pkgs.breeze-gtk;
+    theme.name = "Breeze-Dark";
+    iconTheme.package = pkgs.breeze-icons;
+    iconTheme.name = "breeze-dark";
+  };
+
+  qt = {
+    enable = true;
+    platformTheme = "gtk";
+    style.package = pkgs.qt6Packages.qt6gtk2;
+    style.name = "gtk2";
+  };
+
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
 }

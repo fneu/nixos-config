@@ -5,6 +5,7 @@
     [ 
       ../../modules/boot.nix
       ../../modules/base.nix
+      ../../modules/hyprland.nix
 
       home-manager.nixosModules.home-manager
 
