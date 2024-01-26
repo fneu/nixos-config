@@ -96,11 +96,9 @@
 
   qt = {
     enable = true;
-    platformTheme = "gtk";
-    style.package = pkgs.qt6Packages.qt6gtk2;
-    style.name = "gtk2";
+    platformTheme = "kde";
+    style.name= "breeze";
   };
-
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

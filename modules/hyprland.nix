@@ -9,7 +9,8 @@
     swww
     rofi-wayland
     firefox
-    xfce.thunar
+    dolphin
+    libsForQt5.plasma-workspace  # contains plasma-apply-colorscheme to set colorscheme for qt apps
   ];
 
   programs.hyprland.enable = true;
