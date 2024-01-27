@@ -2,15 +2,21 @@
 
 {
   environment.systemPackages = with pkgs; [
-    kitty
     dunst
     waybar
     libnotify
     swww
     rofi-wayland
     firefox
-    dolphin
-    libsForQt5.plasma-workspace  # contains plasma-apply-colorscheme to set colorscheme for qt apps
+  ];
+
+  services.xserver.enable = false;                        # let's not try to boot into sddm or another display manager
+  services.xserver.desktopManager.plasma5.enable = true;  # installing plasma provides all the bits that dolphin & other needs (thumbnails, other services)
+  environment.plasma5.excludePackages = with pkgs.libsForQt5; [
+    plasma-browser-integration
+    oxygen
+    spectacle
+    kwalletmanager
   ];
 
   programs.hyprland.enable = true;
