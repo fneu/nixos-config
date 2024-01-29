@@ -97,7 +97,8 @@
   home.pointerCursor = {
     package = pkgs.breeze-qt5;
     name = "breeze_cursors";
-    size = 12;
+    size = 24;
+    x11.enable = true;
   };
 
   qt = {

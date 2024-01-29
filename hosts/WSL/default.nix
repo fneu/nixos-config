@@ -17,6 +17,10 @@
   networking.hostName = "WSL";
   system.stateVersion = "23.11";
 
+  environment.variables = rec {
+    QT_SCREEN_SCALE_FACTORS="1.5";
+  };
+
   # Home Manager configuration
   home-manager.extraSpecialArgs = { inherit pkgs; };
   home-manager.users.fabian = import ../../home.nix;
